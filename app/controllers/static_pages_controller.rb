@@ -10,6 +10,9 @@ class StaticPagesController < ApplicationController
   def about
   end
 
+  def contact
+  end
+
   private
   def get_title
     @title = "#{params[:action]} | Ruby on Rails Tutorial Sample App"
