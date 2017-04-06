@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   def new
+    @user = User.new
+  end
+
+  def create
     @user = User.new(create_params)
     if @user.save
     else
@@ -13,7 +17,7 @@ class UsersController < ApplicationController
 
   private
 
-  def create_params
-    perams.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
+    def create_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
 end
