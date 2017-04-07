@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(create_params)
+    @user = User.new(user_params)
     if @user.save
       log_in @user
       flash[:success] = "Welcome to the Sample App!"
@@ -22,9 +22,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+    else
+      render 'edit'
+    end
+  end
+
   private
 
-    def create_params
+    def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 end
