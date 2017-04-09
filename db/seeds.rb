@@ -16,4 +16,8 @@ User.create!(name:  "Example User",
                password_confirmation: password,
                activated: true,
                activated_at: Time.zone.now)
+  content = Faker::Pokemon.name
+  Micropost.create!(content: content,
+                    user_id: 1
+                    )
 end
