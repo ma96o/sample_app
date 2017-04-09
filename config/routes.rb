@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
